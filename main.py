@@ -60,7 +60,7 @@ parser.add_argument('--tb', default=False, action='store_true', help='Use tensor
 
 opt = parser.parse_args()
 gpus_list = list(range(opt.gpus))  # the list of gpu
-hostname = str(socket.gethostname())
+hostname = 'lab265'
 opt.save_folder += opt.prefix
 cudnn.benchmark = True
 if not os.path.exists(opt.save_folder):
