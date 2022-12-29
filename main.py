@@ -74,7 +74,6 @@ def train(epoch):
     model.train()
     t0 = time.time()
     t_io1 = time.time()
-    i = 0
     for batch in training_data_loader:
         gt, mask, index = batch
         t_io2 = time.time()
@@ -96,12 +95,22 @@ def train(epoch):
         d_fake_loss = model.adversarial_loss(d_fake, False, True)
         d_loss += (d_real_loss + d_fake_loss) / 2
 
+        # Backward D
+        d_loss.backward()
+        model.dis_optimizer.step()
+        model.dis_optimizer.zero_grad()
+
         g_fake, _ = model.discriminator(prediction)
         g_gan_loss = model.adversarial_loss(g_fake, True, False)
         g_loss += model.gan_weight * g_gan_loss
         g_l1_loss = model.l1_loss(gt, merged_result) / torch.mean(mask)
         # g_l1_loss = model.l1_loss(gt, prediction) / torch.mean(mask)
         g_loss += model.l1_weight * g_l1_loss
+
+        # Backward G
+        g_loss.backward()
+        model.gen_optimizer.step()
+        model.gen_optimizer.zero_grad()
 
         # Record
         cur_l1_loss += g_l1_loss.data.item()
@@ -110,15 +119,6 @@ def train(epoch):
         avg_gan_loss += g_gan_loss.data.item()
         avg_g_loss += g_loss.data.item()
         avg_d_loss += d_loss.data.item()
-
-        # Backward
-        d_loss.backward()
-        model.dis_optimizer.step()
-        model.dis_optimizer.zero_grad()
-
-        g_loss.backward()
-        model.gen_optimizer.step()
-        model.gen_optimizer.zero_grad()
 
         model.global_iter += 1
         iteration += 1
@@ -174,7 +174,13 @@ def dynamic_weigh(last_losses, cur_losses, T=20):
 
 
 def render(epoch, iter, mask, output, gt):
-    name_pre = 'render/' + str(epoch) + '_' + str(iter) + '_'
+
+    diry = 'render/' + opt.prefix
+
+    if not os.path.exists(diry):
+        os.makedirs(diry)
+
+    name_pre = diry + '/' + str(epoch) + '_' + str(iter) + '_'
 
     # input: (bs,3,256,256)
     input = gt * (1 - mask) + mask
