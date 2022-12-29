@@ -20,8 +20,8 @@ import pdb
 import socket
 import time
 import skimage
-from skimage.measure import compare_ssim
-from skimage.measure import compare_psnr
+from skimage.metrics import peak_signal_noise_ratio as compare_psnr
+from skimage.metrics import structural_similarity as compare_ssim
 from skimage import io
 from models import InpaintingModel
 
