@@ -3,14 +3,15 @@ import argparse
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--path', default='/Disk2/nl/datasets/celeba-256/', type=str,
-                    help='path to the dataset')
-parser.add_argument('--output', default='./datasets/CelebA_HQ_256/CelebA_HQ_256_train.flist', type=str, help='path to the file list')
-parser.add_argument('--output1', default='./datasets/CelebA_HQ_256/CelebA_HQ_256_val.flist', type=str, help='path to the file list')
+parser.add_argument('--path', default='/home/lab265/lab265/datastts/Celeba-HQ/celeba-hq/celeba-256/celeba-265-train', type=str,
+                    help='path to the dataset')#/Disk2/nl/datasets/celeba-256/
+parser.add_argument('--output', default='/home/lab265/lab265/datastts/Celeba-HQ/celeba-hq/celeba-256/celeba-265-train.flist', type=str, help='path to the file list')
+#./datasets/CelebA_HQ_256/CelebA_HQ_256_train.flist
+parser.add_argument('--output1', default='/home/lab265/lab265/datastts/Celeba-HQ/celeba-hq/celeba-256/celeba-265-test.flist', type=str, help='path to the file list')
 args = parser.parse_args()
 
-if not os.path.exists('./datasets/CelebA_HQ_256/'):
-    os.makedirs('./datasets/CelebA_HQ_256/')
+if not os.path.exists('/home/lab265/lab265/datastts/Celeba-HQ/celeba-hq/celeba-256/celeba-265-train'):#./datasets/CelebA_HQ_256/
+    os.makedirs('/home/lab265/lab265/datastts/Celeba-HQ/celeba-hq/celeba-256/celeba-265-train')#./datasets/CelebA_HQ_256/
 
 ext = {'.jpg', '.png', '.JPG'}
 

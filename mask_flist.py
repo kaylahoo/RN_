@@ -16,12 +16,12 @@ args = parser.parse_args()
 
 ext = {'.jpg', '.png', '.JPG'}
 
-path_0_1 = '/Disk2/nl/datasets/celeba_hq_256_train/'
-path_1_2 = '/Disk2/nl/datasets/celeba_hq_256_test/'
-path_2_3 = '/Disk2/nl/datasets/irr_Mask/Mask_2_3/'
-path_3_4 = '/Disk2/nl/datasets/irr_Mask/Mask_3_4/'
-path_4_5 = '/Disk2/nl/datasets/irr_Mask/Mask_4_5/'
-path_5_6 = '/Disk2/nl/datasets/irr_Mask/Mask_5_6/'
+path_0_1 = '/Disk2/nl/datasets/celeba_hq_256_train/'#
+path_1_2 = '/Disk2/nl/datasets/celeba_hq_256_test/'#
+path_2_3 = '/Disk2/nl/datasets/irr_Mask/Mask_2_3/'#
+path_3_4 = '/Disk2/nl/datasets/irr_Mask/Mask_3_4/'#
+path_4_5 = '/Disk2/nl/datasets/irr_Mask/Mask_4_5/'#
+path_5_6 = '/Disk2/nl/datasets/irr_Mask/Mask_5_6/'#
 
 if not os.path.exists('./datasets/mask'):
     os.mkdir('./datasets/mask')
