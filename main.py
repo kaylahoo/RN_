@@ -239,9 +239,9 @@ if __name__ == '__main__':
                             iter=0, threshold=opt.threshold)
     print('---------- Networks architecture -------------')
     print("Generator:")
-    print_network(model.generator)
+    # print_network(model.generator)
     print("Discriminator:")
-    print_network(model.discriminator)
+    # print_network(model.discriminator)
     print('----------------------------------------------')
     initialize_weights(model, scale=0.1)
 

@@ -7,6 +7,7 @@ import numpy as np
 import torchvision.transforms.functional as F
 from PIL import Image
 from imageio import imread
+import cv2
 from skimage.transform import resize
 from skimage.color import rgb2gray, gray2rgb
 from torch.utils.data import DataLoader
@@ -34,11 +35,12 @@ class Dataset(torch.utils.data.Dataset):
         return len(self.data)
 
     def __getitem__(self, index):
-        try:
-            item = self.load_item(index)
-        except:
-            print('loading error: ' + self.data[index])
-            item = self.load_item(0)
+        item = self.load_item(index)
+        # try:
+        #     item = self.load_item(index)
+        # except:
+        #     print('loading error: ' + self.data[index])
+        #     item = self.load_item(0)
 
         return item
 
@@ -107,7 +109,7 @@ class Dataset(torch.utils.data.Dataset):
             i = (imgw - side) // 2
             img = img[j:j + side, i:i + side, ...]
 
-        img = resize(img, [height, width])
+        img = cv2.resize(img, (height, width))
 
         return img
 
