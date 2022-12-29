@@ -6,7 +6,7 @@ import random
 import numpy as np
 import torchvision.transforms.functional as F
 from PIL import Image
-from scipy.misc import imread
+from imageio import imread
 from skimage.color import rgb2gray, gray2rgb
 from torch.utils.data import DataLoader
 from torchvision import transforms
