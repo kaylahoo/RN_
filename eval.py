@@ -197,9 +197,9 @@ if __name__ == '__main__':
                             iter=0, threshold=opt.threshold)
     print('---------- Networks architecture -------------')
     print("Generator:")
-    print_network(model.generator)
+    # print_network(model.generator)
     print("Discriminator:")
-    print_network(model.discriminator)
+    # print_network(model.discriminator)
     print('----------------------------------------------')
 
     pretained_model = torch.load(opt.model, map_location=lambda storage, loc: storage)

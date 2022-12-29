@@ -90,8 +90,9 @@ class Dataset(torch.utils.data.Dataset):
             # mask = 255 - imread(self.mask_data[index])[:,:,0]    # ICME original (H,W,3) mask: 0 for hole
             mask = imread(self.mask_data[index])  # mask must be 255 for hole in this InpaintingModel
             mask = self.resize(mask, imgh, imgw, centerCrop=False)
+            print(mask.size(), "!!!!!!!")
             mask = rgb2gray(mask)
-            print(mask.size(),"!!!!!!!")
+
         mask = (mask > 0).astype(np.uint8) * 255  # threshold due to interpolation
         return mask
 
