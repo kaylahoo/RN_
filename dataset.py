@@ -92,8 +92,8 @@ class Dataset(torch.utils.data.Dataset):
             print(mask.shape)
             mask = self.resize(mask, imgh, imgw, centerCrop=False)
             print(mask.shape, "!!!!!!!")
-            mask = rgb2gray(mask)
-
+            if len(mask.shape) == 3:
+                mask = rgb2gray(mask)
         mask = (mask > 0).astype(np.uint8) * 255  # threshold due to interpolation
         return mask
 
