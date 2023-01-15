@@ -47,7 +47,7 @@ parser.add_argument('--pretrained_sr', default='../weights/xx.pth', help='pretra
 parser.add_argument('--pretrained', type=bool, default=False)
 parser.add_argument('--save_folder', default='./checkpoints/', help='Location to save checkpoint models')
 parser.add_argument('--prefix', default='save', help='Location to save checkpoint models')
-parser.add_argument('--print_interval', type=int, default=1000, help='how many steps to print the results out')
+parser.add_argument('--print_interval', type=int, default=100, help='how many steps to print the results out')
 parser.add_argument('--render_interval', type=int, default=1000, help='how many steps to save a checkpoint')
 parser.add_argument('--l1_weight', type=float, default=1.0)
 parser.add_argument('--gan_weight', type=float, default=0.1)
