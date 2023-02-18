@@ -30,7 +30,7 @@ parser = argparse.ArgumentParser(description='PyTorch Video Inpainting with Back
 parser.add_argument('--img_flist', type=str, default='/home/lab265/lab265/liulu/edge_connect/datasets/celeba_test.flist')
 parser.add_argument('--mask_flist', type=str, default='/home/lab265/lab265/csy/datasets/irregular_mask/celeba-10-20.flist')
 parser.add_argument('--save', default=True, action='store_true', help='If save test images')
-parser.add_argument('--save_path', type=str, default='./test_results/psv-10-20-results')
+parser.add_argument('--save_path', type=str, default='./test_results/celeba-10-20-results')
 parser.add_argument('--model', default='./checkpoints/save/x_1080tiRN_rn_bs_6_epoch_last.pth',
                     help='sr pretrained base model')
 parser.add_argument('--bs', type=int, default=1, help='training batch size')
